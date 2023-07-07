@@ -1,4 +1,5 @@
 import flatpickr from "flatpickr"; // Імпортуємо бібліотеку flatpickr
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 
  
@@ -25,7 +26,7 @@ const options = { // Обєкт з налаштуваннями:
   minuteIncrement: 1, // Інтервал вибору хвилин 1
   onClose(selectedDates) { // Викликаємо функцію onClose
       if ((selectedDates[0] < new Date)) { // 0 Робимо перевірку чи вибрана дата в майбутньому 
-          alert("Please choose a date in the future"); //0 Виводимо повідомлення в алерт якщо дата вибрана в минулому  
+          Notify.failure('Please choose a date in the future'); //0 Виводимо повідомлення в алерт якщо дата вибрана в минулому
           return //0 Пропускаємо подію 
       }
       selectors.startBtn.removeAttribute('disabled'); //* Якщо дата вибрана коретктно знімаємо атрибут disabled з кнопки старт
