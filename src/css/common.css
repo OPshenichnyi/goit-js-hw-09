@@ -28,7 +28,7 @@ img {
   border: solid 2px black;
 }
 
-button[data-start]{
+button{
   width: 150px;
   height: 35px;
   background-color: bisque;

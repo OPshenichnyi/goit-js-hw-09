@@ -1,9 +1,6 @@
 import flatpickr from "flatpickr"; // Імпортуємо бібліотеку flatpickr
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-
- 
-
 const selectors = {
     seconds: document.querySelector('[data-seconds]'), // Отримуємо доступ до span через атрибут data-seconds
     minutes: document.querySelector('[data-minutes]'), // Отримуємо доступ до span через атрибут data-minutes
@@ -12,12 +9,8 @@ const selectors = {
     startBtn: document.querySelector('[data-start]') // Отримуємо доступ до кнопки Start через атрибут data-start
 }
 
-
 selectors.startBtn.setAttribute('disabled', '') // Задаємо атрибут disabled кнопці старт 
-
 selectors.startBtn.addEventListener('click', intervalTimer); // Встановлюємо прослуховувач на кнопку старт для запуску таймера
-
-
 
 const options = { // Обєкт з налаштуваннями:
   enableTime: true, // Вмикає вибір часу
@@ -45,14 +38,13 @@ function intervalTimer() { // Викликається кнопкою Start
         convertMs(delta) // Викликаємо вункцію що буде конвертувати ms
         if (delta <= 900) { // Якщо різниця між вибраною датою та поточною буде дорівнювати або менше 900 ms
             stop(); // Викликаєммо функцію stop
-        }
+        };
     }, 1000) // Заданий інтервал часу  1000 ms
         
     function stop() { 
         clearInterval(intervalId); // Метод зупиняє setInterval
-    }
-}
-
+    };
+};
 
 function convertMs(ms) { 
   // Number of milliseconds per unit of time
@@ -75,7 +67,7 @@ function convertMs(ms) {
     selectors.minutes.textContent = minutes.toString().padStart(2, '0');
     selectors.seconds.textContent = seconds.toString().padStart(2, '0') ;
 
-}
+};
 
 
 
