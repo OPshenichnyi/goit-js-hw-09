@@ -6,13 +6,13 @@ const {delay, step, amount} = form.elements // Робимо деструктур
 form.addEventListener('submit', startCreatPromise) // Додаємо прослуховувач події submit на тег form
 
 function startCreatPromise(event) { // Функція що запускає створення промісів 
-  event.preventDefault(); // Скидаємо поведінку браузера за замовчуванням 
+  
   let firstDelay = Number(delay.value); // Створюємо змінну що буде приймати значення часу створення першого промісу та на кожній ітерації буде збільшуватись на значення змінної stepTime
   let stepTime = Number(step.value); // Створюємо змінну що буде приймати значення часу проміжку для створення наступного промісу
   let count = Number(delay.value); // Створюєммо змінну лічильник що буде приймати та передавати час затримки 
+  
 
   for (let i = 1; i <= Number(amount.value); i += 1) { // Перебераєммо за допомогою цикла for значення amount
-
     setTimeout(() => { // На кожній ітерації створюємо таймер відкладеної подіїї куди передаємо значення firstDelay
 
       let promise = createPromise(i, (count)); // Викликаєммо функцію createPromise через змінну promise яка викликає створення нового промісу на кожній ітерації(передаємо значення позиції та часу відкладенного створення) 
@@ -24,6 +24,8 @@ function startCreatPromise(event) { // Функція що запускає ст
     }, firstDelay); // Змінна що задає значення відкладеної функції setTimeout в Мс
     firstDelay += stepTime; // Додаєммо firstDelay  значення step на кожній ітерації 
   };
+  event.preventDefault(); // Скидаємо поведінку браузера за замовчуванням 
+  form.reset(); // Очищуємо поля вводу form
 };
 
 function createPromise(position, delay) { // Функція створює нові проміси 
